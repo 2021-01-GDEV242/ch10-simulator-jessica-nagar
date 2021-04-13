@@ -66,18 +66,6 @@ public class Rabbit extends Animal
             }
         }
     }
-
-    /**
-     * Increase the age.
-     * This could result in the rabbit's death.
-     */
-    private void incrementAge()
-    {
-        age++;
-        if(age > MAX_AGE) {
-            setDead();
-        }
-    }
     
     /**
      * Check whether or not this rabbit is to give birth at this step.
@@ -115,5 +103,13 @@ public class Rabbit extends Animal
     protected int getBreedingAge()
     {
         return BREEDING_AGE;
+    }
+    
+    /**
+     * returns maximum age
+     */
+    protected int getMaxAge()
+    {
+        return MAX_AGE;
     }
 }

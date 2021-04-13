@@ -88,19 +88,6 @@ public abstract class Animal
     }
     
     /**
-     * a animal can breed if it has reached the breeding age.
-     * @return true if the rabbit can breed, false otherwise
-     */
-    protected boolean canBreed()
-    {
-        return getAge() >= getBreedingAge();
-    }
-    /*
-     * Return the breeding
-     */
-    abstract protected int getBreedingAge();
-    
-    /**
      * Return the animal's location.
      * @return The animal's location.
      */
@@ -130,4 +117,31 @@ public abstract class Animal
     {
         return field;
     }
+    
+    /**
+     * a animal can breed if it has reached the breeding age.
+     * @return true if the rabbit can breed, false otherwise
+     */
+    protected boolean canBreed()
+    {
+        return getAge() >= getBreedingAge();
+    }
+    
+    /**
+     * increase the age of animal. This could result in the animal's death.
+     */
+    protected void incrementAge()
+    {
+        age++;
+        if(age > getMaxAge())
+        {
+            setDead();
+        }
+    }
+    
+    /*
+     * Return the breeding
+     */
+    abstract protected int getBreedingAge();
+    abstract protected int getMaxAge();
 }
