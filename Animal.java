@@ -86,7 +86,20 @@ public abstract class Animal
             field = null;
         }
     }
-
+    
+    /**
+     * a animal can breed if it has reached the breeding age.
+     * @return true if the rabbit can breed, false otherwise
+     */
+    protected boolean canBreed()
+    {
+        return getAge() >= getBreedingAge();
+    }
+    /*
+     * Return the breeding
+     */
+    abstract protected int getBreedingAge();
+    
     /**
      * Return the animal's location.
      * @return The animal's location.
