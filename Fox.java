@@ -6,8 +6,8 @@ import java.util.Random;
  * A simple model of a fox.
  * Foxes age, move, eat rabbits, and die.
  * 
- * @author David J. Barnes and Michael Kölling
- * @version 2016.02.29 (2)
+ * @author Jessica Nagar
+ * @version 2021.04.12
  */
 public class Fox extends Animal
 {
@@ -45,11 +45,10 @@ public class Fox extends Animal
     {
         super(field, location);
         if(randomAge) {
-            age = rand.nextInt(MAX_AGE);
+            setAge(rand.nextInt(MAX_AGE));
             foodLevel = rand.nextInt(RABBIT_FOOD_VALUE);
         }
         else {
-            age = 0;
             foodLevel = RABBIT_FOOD_VALUE;
         }
     }
