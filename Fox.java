@@ -6,8 +6,8 @@ import java.util.Random;
  * A simple model of a fox.
  * Foxes age, move, eat rabbits, and die.
  * 
- * @author David J. Barnes and Michael Kölling
- * @version 2016.02.29 (2)
+ * @author Jessica Nagar
+ * @version 2021.04.12
  */
 public class Fox extends Animal
 {
@@ -45,11 +45,10 @@ public class Fox extends Animal
     {
         super(field, location);
         if(randomAge) {
-            age = rand.nextInt(MAX_AGE);
+            setAge(rand.nextInt(MAX_AGE));
             foodLevel = rand.nextInt(RABBIT_FOOD_VALUE);
         }
         else {
-            age = 0;
             foodLevel = RABBIT_FOOD_VALUE;
         }
     }
@@ -84,16 +83,6 @@ public class Fox extends Animal
         }
     }
 
-    /**
-     * Increase the age. This could result in the fox's death.
-     */
-    private void incrementAge()
-    {
-        age++;
-        if(age > MAX_AGE) {
-            setDead();
-        }
-    }
     
     /**
      * Make this fox more hungry. This could result in the fox's death.
@@ -150,25 +139,26 @@ public class Fox extends Animal
         }
     }
         
-    /**
-     * Generate a number representing the number of births,
-     * if it can breed.
-     * @return The number of births (may be zero).
-     */
-    private int breed()
+    protected int getBreedingAge()
     {
-        int births = 0;
-        if(canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
-            births = rand.nextInt(MAX_LITTER_SIZE) + 1;
-        }
-        return births;
+        return BREEDING_AGE;
     }
-
-    /**
-     * A fox can breed if it has reached the breeding age.
+    
+        /**
+     * returns maximum age
      */
-    private boolean canBreed()
+    protected int getMaxAge()
     {
-        return age >= BREEDING_AGE;
+        return MAX_AGE;
+    }
+    
+        protected int getMaxLitterSize()
+    {
+        return MAX_LITTER_SIZE;
+    }
+    
+    protected double getBreedingProbability()
+    {
+        return BREEDING_PROBABILITY;
     }
 }
